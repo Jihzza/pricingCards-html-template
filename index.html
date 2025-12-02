@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página de preços com planos flexíveis para todos os tipos de utilizadores">
+    
+    <!-- Google Fonts - Fonte distintiva e moderna -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+    <title>Preços | CloudSync</title>
+</head>
+<body>
+    <!-- 
+        HEADER: Elemento semântico que representa o cabeçalho da página
+        Contém a navegação principal e o logo
+    -->
+    <header class="header">
+        <div class="container header__content">
+            <!-- Logo usando SVG inline para melhor controle de cores -->
+            <a href="#" class="header__logo" aria-label="CloudSync - Página inicial">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/>
+                    <path d="M10 16C10 13.7909 11.7909 12 14 12H18C20.2091 12 22 13.7909 22 16C22 18.2091 20.2091 20 18 20H14C11.7909 20 10 18.2091 10 16Z" fill="currentColor"/>
+                </svg>
+                <span>CloudSync</span>
+            </a>
+            
+            <!-- 
+                NAV: Elemento semântico para navegação
+                aria-label ajuda leitores de ecrã a identificar o propósito
+            -->
+            <nav class="header__nav" aria-label="Navegação principal">
+                <ul class="header__nav-list">
+                    <li><a href="#" class="header__nav-link">Funcionalidades</a></li>
+                    <li><a href="#" class="header__nav-link">Preços</a></li>
+                    <li><a href="#" class="header__nav-link">Sobre</a></li>
+                    <li><a href="#" class="header__nav-link header__nav-link--cta">Começar</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 
+        MAIN: Elemento semântico que contém o conteúdo principal da página
+        Deve haver apenas um <main> por página
+    -->
+    <main>
+        <!-- 
+            SECTION: Elemento semântico para agrupar conteúdo relacionado
+            Esta secção contém a introdução dos preços
+        -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="container hero__content">
+                <span class="hero__badge">Preços Simples</span>
+                <h1 id="hero-title" class="hero__title">
+                    Escolha o plano <span class="gradient-text">perfeito</span> para si
+                </h1>
+                <p class="hero__description">
+                    Sem taxas escondidas. Cancele quando quiser. 
+                    Todos os planos incluem suporte 24/7.
+                </p>
+                
+                <!-- 
+                    Toggle para alternar entre mensal e anual
+                    TÉCNICA CSS-ONLY: Usamos um checkbox escondido + label
+                    O estado :checked do checkbox controla os estilos via CSS
+                -->
+                <div class="hero__toggle">
+                    <span class="hero__toggle-label" data-period="monthly">Mensal</span>
+                    
+                    <!-- Checkbox escondido - o "cérebro" do toggle -->
+                    <input 
+                        type="checkbox" 
+                        id="pricing-toggle" 
+                        class="hero__toggle-checkbox visually-hidden"
+                        aria-label="Alternar entre plano mensal e anual"
+                    >
+                    <!-- Label clicável que controla o checkbox -->
+                    <label for="pricing-toggle" class="hero__toggle-switch">
+                        <span class="hero__toggle-thumb"></span>
+                    </label>
+                    
+                    <span class="hero__toggle-label" data-period="annual">
+                        Anual
+                        <span class="hero__toggle-discount">-20%</span>
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+            SECTION: Secção principal com os cartões de preços
+            Aqui usamos CSS Grid para organizar os cartões
+        -->
+        <section class="pricing" aria-labelledby="pricing-title">
+            <h2 id="pricing-title" class="visually-hidden">Planos disponíveis</h2>
+            
+            <div class="container">
+                <!-- 
+                    Grid de cartões: Cada ARTICLE representa um cartão independente
+                    ARTICLE é semântico para conteúdo que faz sentido sozinho
+                -->
+                <div class="pricing__grid">
+                    
+                    <!-- Cartão 1: Plano Básico -->
+                    <article class="pricing__card">
+                        <div class="pricing__card-header">
+                            <span class="pricing__card-icon" aria-hidden="true">🚀</span>
+                            <h3 class="pricing__card-name">Básico</h3>
+                            <p class="pricing__card-description">Perfeito para começar</p>
+                        </div>
+                        
+                        <div class="pricing__card-price">
+                            <span class="pricing__card-currency">€</span>
+                            <!-- Preço mensal (visível por defeito) -->
+                            <span class="pricing__card-amount pricing__card-amount--monthly">9</span>
+                            <!-- Preço anual (visível quando toggle ativo) -->
+                            <span class="pricing__card-amount pricing__card-amount--annual">7</span>
+                            <span class="pricing__card-period">/mês</span>
+                        </div>
+                        
+                        <!-- 
+                            UL: Lista não ordenada para funcionalidades
+                            Cada item usa ícones decorativos (aria-hidden)
+                        -->
+                        <ul class="pricing__card-features" aria-label="Funcionalidades incluídas">
+                            <li class="pricing__card-feature">
+                                <svg class="pricing__card-check" aria-hidden="true" viewBox="0 0 24 24">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                                </svg>
+                                5 GB de armazenamento
+                            </li>
+                            <li class="pricing__card-feature">
+                                <svg class="pricing__card-check" aria-hidden="true" viewBox="0 0 24 24">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                                </svg>
+                                1 utilizador
+                            </li>
+                            <li class="pricing__card-feature">
+                                <svg class="pricing__card-check" aria-hidden="true" viewBox="0 0 24 24">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                                </svg>
+                                Suporte por email
+                            </li>
+                            <li class="pricing__card-feature pricing__card-feature--disabled">
+                                <svg class="pricing__card-x" aria-hidden="true" viewBox="0 0 24 24">
+                                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
+                                </svg>
+                                Backup automático
+                            </li>
+                            <li class="pricing__card-feature pricing__card-feature--disabled">
+                                <svg class="pricing__card-x" aria-hidden="true" viewBox="0 0 24 24">
+                                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
+                                </svg>
+                                API access
+                            </li>
+                        </ul>
+                        
+                        <a href="#" class="pricing__card-button">
+                            Começar grátis
+                        </a>
+                    </article>
+                    
+                    <!-- Cartão 2: Plano Pro (Destacado) -->
+                    <article class="pricing__card pricing__card--featured">
+                        <!-- Badge de destaque -->
+                        <div class="pricing__card-badge">Mais Popular</div>
+                        
+                        <div class="pricing__card-header">
+                            <span class="pricing__card-icon" aria-hidden="true">⚡</span>
+                            <h3 class="pricing__card-name">Pro</h3>
+                            <p class="pricing__card-description">Para profissionais</p>
+                        </div>
+                        
+                        <div class="pricing__card-price">
+                            <span class="pricing__card-currency">€</span>
+                            <!-- Preço mensal (visível por defeito) -->
+                            <span class="pricing__card-amount pricing__card-amount--monthly">29</span>
+                            <!-- Preço anual (visível quando toggle ativo) -->
+                            <span class="pricing__card-amount pricing__card-amount--annual">23</span>
+                            <span class="pricing__card-period">/mês</span>
+                        </div>
+                        
+                        <ul class="pricing__card-features" aria-label="Funcionalidades incluídas">
+                            <li class="pricing__card-feature">
+                                <svg class="pricing__card-check" aria-hidden="true" viewBox="0 0 24 24">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                                </svg>
+                                100 GB de armazenamento
+                            </li>
+                            <li class="pricing__card-feature">
+                                <svg class="pricing__card-check" aria-hidden="true" viewBox="0 0 24 24">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                                </svg>
+                                5 utilizadores
+                            </li>
+                            <li class="pricing__card-feature">
+                                <svg class="pricing__card-check" aria-hidden="true" viewBox="0 0 24 24">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                                </svg>
+                                Suporte prioritário
+                            </li>
+                            <li class="pricing__card-feature">
+                                <svg class="pricing__card-check" aria-hidden="true" viewBox="0 0 24 24">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                                </svg>
+                                Backup automático
+                            </li>
+                            <li class="pricing__card-feature pricing__card-feature--disabled">
+                                <svg class="pricing__card-x" aria-hidden="true" viewBox="0 0 24 24">
+                                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
+                                </svg>
+                                API access
+                            </li>
+                        </ul>
+                        
+                        <a href="#" class="pricing__card-button pricing__card-button--featured">
+                            Começar agora
+                        </a>
+                    </article>
+                    
+                    <!-- Cartão 3: Plano Enterprise -->
+                    <article class="pricing__card">
+                        <div class="pricing__card-header">
+                            <span class="pricing__card-icon" aria-hidden="true">🏢</span>
+                            <h3 class="pricing__card-name">Enterprise</h3>
+                            <p class="pricing__card-description">Para grandes equipas</p>
+                        </div>
+                        
+                        <div class="pricing__card-price">
+                            <span class="pricing__card-currency">€</span>
+                            <!-- Preço mensal (visível por defeito) -->
+                            <span class="pricing__card-amount pricing__card-amount--monthly">99</span>
+                            <!-- Preço anual (visível quando toggle ativo) -->
+                            <span class="pricing__card-amount pricing__card-amount--annual">79</span>
+                            <span class="pricing__card-period">/mês</span>
+                        </div>
+                        
+                        <ul class="pricing__card-features" aria-label="Funcionalidades incluídas">
+                            <li class="pricing__card-feature">
+                                <svg class="pricing__card-check" aria-hidden="true" viewBox="0 0 24 24">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                                </svg>
+                                Armazenamento ilimitado
+                            </li>
+                            <li class="pricing__card-feature">
+                                <svg class="pricing__card-check" aria-hidden="true" viewBox="0 0 24 24">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                                </svg>
+                                Utilizadores ilimitados
+                            </li>
+                            <li class="pricing__card-feature">
+                                <svg class="pricing__card-check" aria-hidden="true" viewBox="0 0 24 24">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                                </svg>
+                                Suporte 24/7 dedicado
+                            </li>
+                            <li class="pricing__card-feature">
+                                <svg class="pricing__card-check" aria-hidden="true" viewBox="0 0 24 24">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                                </svg>
+                                Backup automático
+                            </li>
+                            <li class="pricing__card-feature">
+                                <svg class="pricing__card-check" aria-hidden="true" viewBox="0 0 24 24">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                                </svg>
+                                API access completo
+                            </li>
+                        </ul>
+                        
+                        <a href="#" class="pricing__card-button">
+                            Contactar vendas
+                        </a>
+                    </article>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+            SECTION: FAQ ou informação adicional
+            Demonstra mais uso de Flexbox para layout
+        -->
+        <section class="features" aria-labelledby="features-title">
+            <div class="container">
+                <h2 id="features-title" class="features__title">
+                    Incluído em todos os planos
+                </h2>
+                
+                <!-- Grid de funcionalidades usando Flexbox -->
+                <div class="features__grid">
+                    <div class="features__item">
+                        <div class="features__icon" aria-hidden="true">🔒</div>
+                        <h3 class="features__name">Segurança SSL</h3>
+                        <p class="features__description">Todos os dados encriptados</p>
+                    </div>
+                    
+                    <div class="features__item">
+                        <div class="features__icon" aria-hidden="true">📱</div>
+                        <h3 class="features__name">Apps móveis</h3>
+                        <p class="features__description">iOS e Android incluídos</p>
+                    </div>
+                    
+                    <div class="features__item">
+                        <div class="features__icon" aria-hidden="true">🔄</div>
+                        <h3 class="features__name">Sync automático</h3>
+                        <p class="features__description">Em todos os dispositivos</p>
+                    </div>
+                    
+                    <div class="features__item">
+                        <div class="features__icon" aria-hidden="true">💬</div>
+                        <h3 class="features__name">Suporte</h3>
+                        <p class="features__description">Equipa sempre disponível</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 
+        FOOTER: Elemento semântico para o rodapé da página
+        Contém informações secundárias, links e copyright
+    -->
+    <footer class="footer">
+        <div class="container footer__content">
+            <div class="footer__brand">
+                <a href="#" class="footer__logo" aria-label="CloudSync - Página inicial">
+                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/>
+                        <path d="M10 16C10 13.7909 11.7909 12 14 12H18C20.2091 12 22 13.7909 22 16C22 18.2091 20.2091 20 18 20H14C11.7909 20 10 18.2091 10 16Z" fill="currentColor"/>
+                    </svg>
+                    <span>CloudSync</span>
+                </a>
+                <p class="footer__tagline">Armazenamento na cloud, simplificado.</p>
+            </div>
+            
+            <!-- Links do footer organizados em colunas -->
+            <nav class="footer__nav" aria-label="Links do rodapé">
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Produto</h4>
+                    <ul class="footer__links">
+                        <li><a href="#">Funcionalidades</a></li>
+                        <li><a href="#">Preços</a></li>
+                        <li><a href="#">Segurança</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Empresa</h4>
+                    <ul class="footer__links">
+                        <li><a href="#">Sobre nós</a></li>
+                        <li><a href="#">Carreiras</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__column">
+                    <h4 class="footer__column-title">Suporte</h4>
+                    <ul class="footer__links">
+                        <li><a href="#">Centro de ajuda</a></li>
+                        <li><a href="#">Contacto</a></li>
+                        <li><a href="#">Status</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        
+        <div class="footer__bottom">
+            <div class="container footer__bottom-content">
+                <p class="footer__copyright">
+                    © 2024 CloudSync. Todos os direitos reservados.
+                </p>
+                <div class="footer__legal">
+                    <a href="#">Privacidade</a>
+                    <a href="#">Termos</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
